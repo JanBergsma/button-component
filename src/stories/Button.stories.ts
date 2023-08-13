@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3'
 
-import Button from '../components/Button.vue';
+import Button from '../components/Button.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -8,18 +8,37 @@ const meta = {
   component: Button,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
-  argTypes: {
-  },
-  args: {}, // default value
-} satisfies Meta<typeof Button>;
+  argTypes: {},
+  args: {} // default value
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/vue/api/csf
  * to learn how to use render functions.
  */
 export const Default: Story = {
-  args: {}
-};
+  args: { name: 'Default' }
+}
+
+export const Outline: Story = {
+  args: { name: 'Outline', outline: true }
+}
+
+export const Text: Story = {
+  args: { name: 'Text', text: true }
+}
+
+export const DisableShadow: Story = {
+  args: { name: 'Disable Shadow', disableShadow: true }
+}
+
+export const Disabled: Story = {
+  args: { name: 'Disabled', disabled: true }
+}
+
+export const DisabledText: Story = {
+  args: { name: 'Disabled', text: true, disabled: true }
+}
