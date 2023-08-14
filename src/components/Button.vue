@@ -7,6 +7,7 @@ export interface Props {
   text: boolean
   disableShadow: boolean
   disabled: boolean
+  size?: string
   startIcon?: string
   endIcon?: string
 }
@@ -18,12 +19,20 @@ const props = withDefaults(defineProps<Props>(), {
   disableShadow: false,
   disabled: false
 })
-const hasIcon = props.startIcon || props.endIcon
+
+const nonDefault = props.startIcon || props.endIcon || props.size
 const isOutline = props.outline
 const isText = props.text
 const shadowIsDisabled = props.disableShadow
 const isDisabled = props.disabled
-const isDefault = !(isOutline || isText || shadowIsDisabled || isDisabled || hasIcon)
+const isDefault = !(
+  isOutline ||
+  isText ||
+  shadowIsDisabled ||
+  isDisabled ||
+  nonDefault ||
+  props.size != ''
+)
 </script>
 
 <template>
@@ -41,7 +50,10 @@ const isDefault = !(isOutline || isText || shadowIsDisabled || isDisabled || has
       text: isText,
       disableShadow: shadowIsDisabled,
       disabled: isDisabled,
-      hasIcon: hasIcon
+      hasIcon: nonDefault,
+      md: size != 'sm' && size != 'lg',
+      sm: size == 'sm',
+      lg: size == 'lg'
     }"
     :disabled="isDisabled"
   >
@@ -55,13 +67,22 @@ const isDefault = !(isOutline || isText || shadowIsDisabled || isDisabled || has
 
 <style scoped>
 button {
-  padding: 0.5rem 1rem;
   font-family: 'Noto Sans', sans-serif;
   font-weight: 500;
   font-size: 0.875rem;
   border-radius: 6px;
   border: none;
   box-shadow: 0px 2px 3px 0px rgba(51, 51, 51, 0.04);
+}
+
+.sm {
+  padding: 0.3rem 0.5rem;
+}
+.md {
+  padding: 0.5rem 1rem;
+}
+.lg {
+  padding: 1rem 1.2rem;
 }
 
 .material-icons-outlined {

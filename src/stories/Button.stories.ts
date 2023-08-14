@@ -50,3 +50,15 @@ export const StartIcon: Story = {
 export const EndIcon: Story = {
   args: { name: 'End Icon', endIcon: 'local_grocery_store' }
 }
+
+export const SizeSm: Story = {
+  args: { name: 'Size sm', size: 'sm' }
+}
+
+export const SizeMd: Story = {
+  args: { name: 'Size md', size: 'md' }
+}
+
+export const SizeLg: Story = {
+  args: { name: 'Size lg', size: 'lg' }
+}
