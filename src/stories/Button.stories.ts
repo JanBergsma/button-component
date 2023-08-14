@@ -40,5 +40,13 @@ export const Disabled: Story = {
 }
 
 export const DisabledText: Story = {
-  args: { name: 'Disabled', text: true, disabled: true }
+  args: { name: 'Disabled Text', text: true, disabled: true }
+}
+
+export const StartIcon: Story = {
+  args: { name: 'Start Icon', startIcon: 'local_grocery_store' }
+}
+
+export const EndIcon: Story = {
+  args: { name: 'End Icon', endIcon: 'local_grocery_store' }
 }

@@ -1,10 +1,14 @@
 <script lang="ts" setup>
+import { StartIcon } from '@/stories/Button.stories'
+
 export interface Props {
   name: string
   outline: boolean
   text: boolean
   disableShadow: boolean
   disabled: boolean
+  startIcon?: string
+  endIcon?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,25 +18,38 @@ const props = withDefaults(defineProps<Props>(), {
   disableShadow: false,
   disabled: false
 })
+const hasIcon = props.startIcon || props.endIcon
 const isOutline = props.outline
 const isText = props.text
 const shadowIsDisabled = props.disableShadow
 const isDisabled = props.disabled
-const isDefault = !(isOutline || isText || shadowIsDisabled || isDisabled)
+const isDefault = !(isOutline || isText || shadowIsDisabled || isDisabled || hasIcon)
 </script>
 
 <template>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="ẗrue" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
   <button
     :class="{
       default: isDefault,
       outline: isOutline,
       text: isText,
       disableShadow: shadowIsDisabled,
-      disabled: isDisabled
+      disabled: isDisabled,
+      hasIcon: hasIcon
     }"
     :disabled="isDisabled"
   >
-    {{ name }}
+    <div class="button-text-container">
+      <span class="material-icons-outlined">{{ startIcon }}</span>
+      {{ name }}
+      <span class="material-icons-outlined">{{ endIcon }}</span>
+    </div>
   </button>
 </template>
 
@@ -45,6 +62,17 @@ button {
   border-radius: 6px;
   border: none;
   box-shadow: 0px 2px 3px 0px rgba(51, 51, 51, 0.04);
+}
+
+.material-icons-outlined {
+  font-size: small;
+}
+.button-text-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.4rem;
+  align-items: center;
+  align-content: center;
 }
 .default {
   background: #e0e0e0;
@@ -92,5 +120,14 @@ button {
 .disabled.text:hover,
 .disabled.text:focus {
   background: #ffffff;
+}
+
+.hasIcon {
+  background: #3d5afe;
+  color: #ffffff;
+}
+.hasIcon:hover,
+.hasIcon:focus {
+  background: #5f5afe;
 }
 </style>
