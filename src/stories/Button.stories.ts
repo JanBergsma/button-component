@@ -62,3 +62,19 @@ export const SizeMd: Story = {
 export const SizeLg: Story = {
   args: { name: 'Size lg', size: 'lg' }
 }
+
+export const ColorDefault: Story = {
+  args: { name: 'Color Default', color: 'default' }
+}
+
+export const ColorPrimary: Story = {
+  args: { name: 'Color Primary', color: 'primary' }
+}
+
+export const ColorSecondary: Story = {
+  args: { name: 'Color Secondary', color: 'secondary' }
+}
+
+export const ColorDanger: Story = {
+  args: { name: 'Color Danger', color: 'danger' }
+}
