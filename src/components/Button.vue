@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { StartIcon } from '@/stories/Button.stories'
-import { popScopeId } from 'vue'
-
 export interface Props {
   name?: string
   color?: string
